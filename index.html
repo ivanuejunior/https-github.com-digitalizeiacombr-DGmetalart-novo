@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <script>
+      (function() {
+        try {
+          const originalFetch = window.fetch;
+          let currentFetch = originalFetch;
+          Object.defineProperty(window, 'fetch', {
+            configurable: true,
+            enumerable: true,
+            get() {
+              return currentFetch;
+            },
+            set(value) {
+              currentFetch = value;
+            }
+          });
+        } catch (e) {
+          console.warn("Failed to patch window.fetch:", e);
+        }
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/Logo-original-jpeg-removebg-preview.png" />
+    <link rel="apple-touch-icon" href="/Logo-original-jpeg-removebg-preview.png" />
+    <title>DG Metal Art | Móveis Industriais sob Medida e Serralheria em São Paulo</title>
+    <meta name="description" content="Especialista em móveis estilo industrial sob medida (ferro e madeira maciça) e projetos personalizados de serralheria de alto padrão. Mais de 25 anos de experiência atendendo a Vila Ema, Zona Leste e toda Grande São Paulo. Veja nossa galeria e faça um orçamento sem compromisso!" />
+    <meta name="keywords" content="móveis industriais metalon, móveis estilo industrial, serralheria vila ema, serralheria zona leste sp, projetos especiais de serralheria, dg metal art, móveis de ferro e madeira sob medida, mesa de jantar industrial, estante industrial ferro, acabamento em aço corten" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://teal-spoonbill-601692.hostingersite.com/" />
+    
+    <!-- Open Graph / Facebook / WhatsApp Sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://teal-spoonbill-601692.hostingersite.com/" />
+    <meta property="og:title" content="DG Metal Art | Móveis Industriais sob Medida e Serralheria Artística" />
+    <meta property="og:description" content="Móveis exclusivos em ferro e madeira maciça, designs sob medida e soluções sob demanda em serralheria artística com mais de 25 anos de experiência e sofisticação." />
+    <meta property="og:image" content="https://teal-spoonbill-601692.hostingersite.com/Logo-original-jpeg-removebg-preview.png" />
+    <meta property="og:locale" content="pt_BR" />
+
+    <!-- Twitter / X Sharing -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://teal-spoonbill-601692.hostingersite.com/" />
+    <meta property="twitter:title" content="DG Metal Art | Móveis Industriais e Projetos Especiais" />
+    <meta property="twitter:description" content="Trabalho de serralheria artística e móveis industriais de alta qualidade em metal e madeira maciça. Atendimento em São Paulo." />
+    <meta property="twitter:image" content="https://teal-spoonbill-601692.hostingersite.com/Logo-original-jpeg-removebg-preview.png" />
+
+    <!-- Google LocalBusiness JSON-LD Schema (Golden Standard for Local SEO) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "DG Metal Art",
+        "image": "https://teal-spoonbill-601692.hostingersite.com/Logo-original-jpeg-removebg-preview.png",
+        "@id": "https://teal-spoonbill-601692.hostingersite.com/#localbusiness",
+        "url": "https://teal-spoonbill-601692.hostingersite.com/",
+        "telephone": "+5511993202941",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Vila Ema",
+          "addressLocality": "São Paulo",
+          "addressRegion": "SP",
+          "postalCode": "03282-000",
+          "addressCountry": "BR"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -23.5910,
+          "longitude": -46.5450
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "08:00",
+            "closes": "18:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Saturday",
+            "opens": "08:00",
+            "closes": "13:00"
+          }
+        ],
+        "sameAs": [
+          "https://www.instagram.com/dgmetalart"
+        ]
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

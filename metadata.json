@@ -1,0 +1,7 @@
+{
+  "name": "DG Metal Art",
+  "description": "Mais de 25 anos de experiência em projetos especiais, móveis industriais em metalon e serralheria artística na Vila Ema, SP.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

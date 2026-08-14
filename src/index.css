@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Oswald", ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-zinc-50 text-zinc-900 font-sans antialiased;
+}
+
+/* Custom pulsing animation for the main red WhatsApp CTA */
+@keyframes pulse-slow {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.5);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 15px rgba(220, 38, 38, 0);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2.5s infinite ease-in-out;
+}
+
+/* Custom scrollbar for an industrial look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-zinc-950;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-zinc-700 rounded-sm;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-red-600;
+}
