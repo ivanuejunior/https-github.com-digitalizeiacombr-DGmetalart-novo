@@ -608,7 +608,7 @@ export default function App() {
               className="group relative rounded-lg overflow-hidden aspect-[9/16] flex items-center justify-center bg-black shadow-lg border border-zinc-200"
             >
               <img 
-                src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=600" 
+                src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80&w=600" 
                 alt="Highlight Processos" 
                 loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700"
@@ -628,7 +628,7 @@ export default function App() {
               className="group relative rounded-lg overflow-hidden aspect-[9/16] flex items-center justify-center bg-black shadow-lg border border-zinc-200"
             >
               <img 
-                src="https://images.unsplash.com/photo-1581428982868-e410dd047a90?auto=format&fit=crop&q=80&w=600" 
+                src="https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?auto=format&fit=crop&q=80&w=600" 
                 alt="Highlight Sob Medida" 
                 loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700"
@@ -648,7 +648,7 @@ export default function App() {
               className="group relative rounded-lg overflow-hidden aspect-[9/16] flex items-center justify-center bg-black shadow-lg border border-zinc-200 sm:col-span-2 md:col-span-1"
             >
               <img 
-                src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=600" 
+                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=600" 
                 alt="Highlight Instalação" 
                 loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700"
