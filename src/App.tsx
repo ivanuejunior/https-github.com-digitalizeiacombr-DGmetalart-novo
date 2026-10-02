@@ -121,6 +121,8 @@ const INSTAGRAM_POSTS = [
 
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentHeroImage, setCurrentHeroImage] = useState(0);
 
@@ -128,9 +130,21 @@ export default function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+      setIsScrolled(currentScrollY > 40);
+
+      // Cabeçalho móvel dinâmico:
+      // Ao rolar para baixo, recolhe o cabeçalho para liberar espaço da tela
+      // Ao rolar para cima ou no topo da página, o cabeçalho reaparece suavemente
+      if (currentScrollY > lastScrollY && currentScrollY > 70) {
+        setIsHeaderVisible(false);
+        setIsMobileMenuOpen(false);
+      } else {
+        setIsHeaderVisible(true);
+      }
+      setLastScrollY(currentScrollY);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     
     // Rotating hero image interval
     const interval = setInterval(() => {
@@ -141,18 +155,24 @@ export default function App() {
       window.removeEventListener('scroll', handleScroll);
       clearInterval(interval);
     };
-  }, [heroImages.length]);
+  }, [lastScrollY, heroImages.length]);
 
   return (
     <div className="min-h-screen bg-[#f4f4f5] text-zinc-900 overflow-x-hidden selection:bg-[#dc2626]/20 selection:text-[#dc2626]">
       
-      {/* 1. Header (Cabeçalho) */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-zinc-950/90 border-b border-[#c0c0c0] py-3 shadow-md' : 'bg-transparent py-5'}`}>
+      {/* 1. Header (Cabeçalho Móvel e Responsivo) */}
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 transform ${
+        isHeaderVisible ? 'translate-y-0' : '-translate-y-full'
+      } ${
+        isScrolled 
+          ? 'bg-zinc-950/95 backdrop-blur-md border-b border-zinc-800 py-2 sm:py-2.5 shadow-lg' 
+          : 'bg-zinc-950/70 md:bg-transparent py-2.5 md:py-4'
+      }`}>
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           
           {/* Logotipo */}
           <a href="#hero" className="flex items-center group">
-            <div className="h-16 md:h-24 w-auto flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+            <div className="h-10 sm:h-12 md:h-18 w-auto flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
               <img src={logoUrl} alt="Logo DG Metal Art" className="h-full w-auto object-contain" />
             </div>
           </a>
@@ -407,7 +427,7 @@ export default function App() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="group relative bg-[#ffffff] border border-[#c0c0c0] transition-all duration-300 hover:border-[#dc2626] overflow-hidden rounded-sm min-h-[460px] flex flex-col justify-between shadow-sm hover:shadow-xl"
+              className="group relative bg-[#ffffff] border border-[#c0c0c0] transition-all duration-300 hover:border-[#dc2626] hover:scale-105 overflow-hidden rounded-sm min-h-[460px] flex flex-col justify-between shadow-sm hover:shadow-2xl cursor-pointer"
             >
               <div>
                 <div className="h-56 overflow-hidden relative">
@@ -436,7 +456,7 @@ export default function App() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="group relative bg-[#ffffff] border border-[#c0c0c0] transition-all duration-300 hover:border-[#dc2626] overflow-hidden rounded-sm min-h-[460px] flex flex-col justify-between shadow-sm hover:shadow-xl"
+              className="group relative bg-[#ffffff] border border-[#c0c0c0] transition-all duration-300 hover:border-[#dc2626] hover:scale-105 overflow-hidden rounded-sm min-h-[460px] flex flex-col justify-between shadow-sm hover:shadow-2xl cursor-pointer"
             >
               <div>
                 <div className="h-56 overflow-hidden relative">
@@ -465,7 +485,7 @@ export default function App() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="group relative bg-[#ffffff] border border-[#c0c0c0] transition-all duration-300 hover:border-[#dc2626] overflow-hidden rounded-sm min-h-[460px] flex flex-col justify-between shadow-sm hover:shadow-xl"
+              className="group relative bg-[#ffffff] border border-[#c0c0c0] transition-all duration-300 hover:border-[#dc2626] hover:scale-105 overflow-hidden rounded-sm min-h-[460px] flex flex-col justify-between shadow-sm hover:shadow-2xl cursor-pointer"
             >
               <div>
                 <div className="h-56 overflow-hidden relative">
@@ -515,51 +535,51 @@ export default function App() {
       </section>
 
       {/* Seção 4.5: Portfólio (Feed do Instagram Simulado) */}
-      <section id="portfolio" className="py-24 bg-zinc-50 border-b border-zinc-200 relative select-none">
+      <section id="portfolio" className="py-12 md:py-16 bg-zinc-50 border-b border-zinc-200 relative select-none">
         
         {/* Subtle decorative grid background */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000003_1px,transparent_1px),linear-gradient(to_bottom,#00000003_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           
-          <div className="text-center mb-16">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#dc2626] mb-3 block">Portfólio Real</span>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-3xl font-black uppercase tracking-tight text-black leading-none mb-4">
-              Siga Nosso Feed de Projetos
+          <div className="text-center mb-8 md:mb-10">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#dc2626] mb-2 block">Portfólio Oficial</span>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-3xl font-black uppercase tracking-tight text-black leading-none mb-3">
+              Siga Nosso Feed no Instagram
             </h2>
-            <p className="text-zinc-600 text-sm max-w-xl mx-auto font-light">
-              Assista ao vídeo real de fabricação e projetos exclusivos em ação na nossa oficina.
+            <p className="text-zinc-600 text-xs sm:text-sm max-w-xl mx-auto font-light">
+              Conecte-se com nosso perfil oficial e acompanhe nossas publicações, novidades e catálogo completo.
             </p>
-            <div className="w-14 h-1 bg-[#dc2626] mx-auto mt-6" />
+            <div className="w-12 h-1 bg-[#dc2626] mx-auto mt-4" />
           </div>
 
           {/* Instagram Simulated Profile Header */}
-          <div className="flex flex-col md:flex-row items-center gap-6 p-6 md:p-8 rounded-sm bg-white border border-zinc-200 shadow-md max-w-4xl mx-auto mb-12">
+          <div className="flex flex-col md:flex-row items-center gap-5 p-5 md:p-6 rounded-sm bg-white border border-zinc-200 shadow-md max-w-3xl mx-auto mb-6">
             
             {/* Instagram Story Gradient Ring */}
-            <div className="relative p-1 bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] rounded-full shrink-0">
-              <div className="p-1 bg-white rounded-full">
-                <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-black flex items-center justify-center overflow-hidden shadow-inner">
+            <div className="relative p-0.5 bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] rounded-full shrink-0">
+              <div className="p-0.5 bg-white rounded-full">
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-black flex items-center justify-center overflow-hidden shadow-inner">
                   <img src={logoUrl} alt="DG Metal Art" className="w-full h-full object-cover rounded-full" />
                 </div>
               </div>
-              <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-[#dc2626] text-white text-[9px] font-black tracking-widest uppercase px-2 py-0.5 rounded-sm shadow-md border border-white whitespace-nowrap">
+              <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 bg-[#dc2626] text-white text-[8px] font-black tracking-widest uppercase px-1.5 py-0.5 rounded-sm shadow-md border border-white whitespace-nowrap">
                 FÁBRICA (25 anos)
               </span>
             </div>
 
-            <div className="flex-1 text-center md:text-left space-y-3.5">
-              <div className="flex flex-col sm:flex-row sm:items-center gap-3 justify-center md:justify-start">
-                <h3 className="font-display font-black tracking-tight text-xl text-black flex items-center gap-1 justify-center sm:justify-start">
+            <div className="flex-1 text-center md:text-left space-y-2.5">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2.5 justify-center md:justify-start">
+                <h3 className="font-display font-black tracking-tight text-lg text-black flex items-center gap-1 justify-center sm:justify-start">
                   dg.metal.art
-                  <span className="inline-flex items-center justify-center w-4 h-4 bg-[#3897f0] text-white rounded-full text-[8px] font-black" title="Perfil Comercial Verificado">✓</span>
+                  <span className="inline-flex items-center justify-center w-3.5 h-3.5 bg-[#3897f0] text-white rounded-full text-[7px] font-black" title="Perfil Comercial Verificado">✓</span>
                 </h3>
                 <div className="flex items-center gap-2 justify-center sm:justify-start">
                   <a 
                     href="https://www.instagram.com/dg.metal.art" 
                     target="_blank" 
                     rel="noreferrer"
-                    className="bg-[#3897f0] hover:bg-[#2980b9] text-white text-[11px] font-bold py-1.5 px-4 rounded-sm transition-all"
+                    className="bg-[#3897f0] hover:bg-[#2980b9] text-white text-[10px] font-bold py-1 px-3 rounded-sm transition-all"
                   >
                     Seguir Perfil
                   </a>
@@ -567,45 +587,68 @@ export default function App() {
                     href={WHATSAPP_LINK}
                     target="_blank" 
                     rel="noreferrer"
-                    className="bg-zinc-100 hover:bg-zinc-200 text-black text-[11px] font-bold py-1.5 px-4 rounded-sm border border-zinc-200 transition-all flex items-center gap-1 shadow-sm"
+                    className="bg-zinc-100 hover:bg-zinc-200 text-black text-[10px] font-bold py-1 px-3 rounded-sm border border-zinc-200 transition-all flex items-center gap-1 shadow-sm"
                   >
-                    <MessageCircle className="w-3.5 h-3.5" />
+                    <MessageCircle className="w-3 h-3" />
                     <span>Orçamento</span>
                   </a>
                 </div>
               </div>
 
               {/* Instagram Feed Stats */}
-              <div className="flex items-center gap-6 text-xs text-zinc-600 justify-center md:justify-start">
+              <div className="flex items-center gap-5 text-[11px] text-zinc-600 justify-center md:justify-start">
                 <span><strong className="font-bold text-black">9</strong> publicações</span>
                 <span><strong className="font-bold text-black">14.2k</strong> seguidores</span>
                 <span><strong className="font-bold text-black">250</strong> seguindo</span>
               </div>
 
               {/* Company Bio */}
-              <div className="text-zinc-700 text-xs leading-relaxed space-y-1">
-                <p className="font-bold text-black text-sm">DG Metal Art • Mobiliário e Estruturas Metálicas</p>
+              <div className="text-zinc-700 text-[11px] leading-relaxed space-y-0.5">
+                <p className="font-bold text-black text-xs">DG Metal Art • Mobiliário e Estruturas Metálicas</p>
                 <p>⚙️ Unindo estética industrial, robustez de metal e acabamento impecável.</p>
                 <p>📍 Vila Ema - São Paulo/SP. 🔨 Atendemos sob medida em toda SP.</p>
               </div>
             </div>
           </div>
 
-          {/* Vídeo do Portfólio em Looping com Botão de Ativar Som */}
-          <PortfolioVideo whatsappLink={WHATSAPP_LINK} />
-
-          {/* CTA Footer inside Portfolio */}
-          <div className="mt-14 text-center">
+          {/* Botão do Instagram Abaixo do Card */}
+          <div className="text-center">
             <a 
               href="https://www.instagram.com/dg.metal.art" 
               target="_blank" 
               rel="noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-zinc-800 via-zinc-900 to-zinc-850 hover:from-black hover:to-black text-white hover:text-[#ee2a7b] font-display font-black uppercase text-xs tracking-widest py-3 px-8 border border-zinc-700/80 rounded-full shadow-sm transition-all"
+              className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-zinc-800 via-zinc-900 to-zinc-850 hover:from-black hover:to-black text-white hover:text-[#ee2a7b] font-display font-black uppercase text-xs tracking-widest py-2.5 px-7 border border-zinc-700/80 rounded-full shadow-sm transition-all"
             >
               <Instagram className="w-4 h-4 text-[#ee2a7b]" />
               <span>Ver Feed Completo no Instagram</span>
             </a>
           </div>
+
+        </div>
+
+      </section>
+
+      {/* Seção 4.6: Vídeo de Projeto Executado (Seção Separada) */}
+      <section id="video" className="py-12 md:py-16 bg-white border-b border-zinc-200 relative select-none">
+        
+        {/* Subtle decorative grid background */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000003_1px,transparent_1px),linear-gradient(to_bottom,#00000003_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          
+          <div className="text-center mb-6 md:mb-8">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#dc2626] mb-2 block">Bastidores & Produção</span>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-3xl font-black uppercase tracking-tight text-black leading-none mb-3">
+              Projeto executado
+            </h2>
+            <p className="text-zinc-600 text-xs sm:text-sm max-w-xl mx-auto font-light">
+              Entrega e instalação
+            </p>
+            <div className="w-12 h-1 bg-[#dc2626] mx-auto mt-4" />
+          </div>
+
+          {/* Vídeo do Portfólio Clean com Somente os Botões "Ativar som" e "Veja outros projetos" */}
+          <PortfolioVideo instagramLink="https://www.instagram.com/dg.metal.art/" />
 
         </div>
 
