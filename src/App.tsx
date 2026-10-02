@@ -4,8 +4,9 @@ import {
   Menu, X, MessageCircle, Hammer, 
   ShieldCheck, PenTool, MapPin, 
   ArrowRight, Phone, Mail, Clock, Calendar,
-  Instagram, Heart, Eye, ExternalLink, PlayCircle
+  Instagram, Heart, Eye, ExternalLink
 } from 'lucide-react';
+import PortfolioVideo from './components/PortfolioVideo';
 
 const logoUrl = '/Logo-original-jpeg-removebg-preview.png';
 const secao2Url = '/foto-2-secao.jpg';
@@ -527,7 +528,7 @@ export default function App() {
               Siga Nosso Feed de Projetos
             </h2>
             <p className="text-zinc-600 text-sm max-w-xl mx-auto font-light">
-              Clique em nossos destaques para assistir aos vídeos reais de fabricação e instalação dos nossos projetos.
+              Assista ao vídeo real de fabricação e projetos exclusivos em ação na nossa oficina.
             </p>
             <div className="w-14 h-1 bg-[#dc2626] mx-auto mt-6" />
           </div>
@@ -590,76 +591,8 @@ export default function App() {
             </div>
           </div>
 
-          {/* Instagram Video Previews (Highlights) */}
-          <div className="text-center mb-10 flex justify-center">
-            <div className="inline-flex items-center gap-3 bg-[#dc2626] text-white px-8 py-3 rounded-full shadow-lg shadow-[#dc2626]/20 ring-4 ring-[#dc2626]/10">
-              <PlayCircle className="w-6 h-6 animate-pulse" />
-              <h3 className="font-display text-lg sm:text-xl font-black uppercase tracking-widest">
-                Veja nossos vídeos
-              </h3>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {/* Card 1 */}
-            <a 
-              href="https://www.instagram.com/stories/highlights/18115455013689331/" 
-              target="_blank" 
-              rel="noreferrer"
-              className="group relative rounded-lg overflow-hidden aspect-[9/16] flex items-center justify-center bg-black shadow-lg border border-zinc-200"
-            >
-              <img 
-                src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80&w=600" 
-                alt="Highlight Processos" 
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
-              <div className="relative z-10 text-white text-center flex flex-col items-center">
-                <PlayCircle className="w-16 h-16 mb-4 opacity-90 group-hover:scale-110 transition-transform duration-300" />
-                <span className="font-display font-bold uppercase tracking-widest text-sm drop-shadow-md">Nossa Produção</span>
-              </div>
-            </a>
-            
-            {/* Card 2 */}
-            <a 
-              href="https://www.instagram.com/stories/highlights/17845916820433939/" 
-              target="_blank" 
-              rel="noreferrer"
-              className="group relative rounded-lg overflow-hidden aspect-[9/16] flex items-center justify-center bg-black shadow-lg border border-zinc-200"
-            >
-              <img 
-                src="https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?auto=format&fit=crop&q=80&w=600" 
-                alt="Highlight Sob Medida" 
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
-              <div className="relative z-10 text-white text-center flex flex-col items-center">
-                <PlayCircle className="w-16 h-16 mb-4 opacity-90 group-hover:scale-110 transition-transform duration-300" />
-                <span className="font-display font-bold uppercase tracking-widest text-sm drop-shadow-md">Projetos Exclusivos</span>
-              </div>
-            </a>
-
-            {/* Card 3 */}
-            <a 
-              href="https://www.instagram.com/stories/highlights/18119793385537986/" 
-              target="_blank" 
-              rel="noreferrer"
-              className="group relative rounded-lg overflow-hidden aspect-[9/16] flex items-center justify-center bg-black shadow-lg border border-zinc-200 sm:col-span-2 md:col-span-1"
-            >
-              <img 
-                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=600" 
-                alt="Highlight Instalação" 
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
-              <div className="relative z-10 text-white text-center flex flex-col items-center">
-                <PlayCircle className="w-16 h-16 mb-4 opacity-90 group-hover:scale-110 transition-transform duration-300" />
-                <span className="font-display font-bold uppercase tracking-widest text-sm drop-shadow-md">Entregas e Feedback</span>
-              </div>
-            </a>
-          </div>
+          {/* Vídeo do Portfólio em Looping com Botão de Ativar Som */}
+          <PortfolioVideo whatsappLink={WHATSAPP_LINK} />
 
           {/* CTA Footer inside Portfolio */}
           <div className="mt-14 text-center">
