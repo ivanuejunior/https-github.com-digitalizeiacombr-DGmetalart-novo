@@ -84,37 +84,37 @@ export default function PortfolioVideo({ whatsappLink }: PortfolioVideoProps) {
   return (
     <div className="max-w-4xl mx-auto flex flex-col items-center">
       
-      {/* Botão em Grande Destaque para Ativar o Som */}
-      <div className="mb-6 flex flex-col items-center gap-2">
+      {/* Barra Superior Acima do Vídeo (para não tampar a logo no vídeo) */}
+      <div className="w-full max-w-[380px] sm:max-w-[420px] mb-3.5 flex items-center justify-between gap-3 px-1">
+        <div className="inline-flex items-center gap-1.5 bg-zinc-900 border border-zinc-700/80 px-3.5 py-1.5 rounded-full text-white text-[11px] sm:text-xs font-bold tracking-wider uppercase shadow-sm">
+          <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
+          <Sparkles className="w-3.5 h-3.5 text-red-500" />
+          <span>Vídeo projeto executado</span>
+        </div>
+
+        {/* Botão de Som Acima do Vídeo */}
         <button
           type="button"
           onClick={toggleSound}
-          className={`group relative inline-flex items-center gap-3.5 px-8 py-4 rounded-full font-display font-black uppercase text-sm sm:text-base tracking-widest transition-all duration-300 shadow-2xl cursor-pointer ${
+          className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full transition-all duration-200 cursor-pointer shadow-md border ${
             isMuted
-              ? 'bg-gradient-to-r from-red-600 via-[#dc2626] to-red-700 text-white ring-4 ring-red-500/40 hover:ring-red-400 hover:scale-105 animate-pulse shadow-red-600/40'
-              : 'bg-zinc-950 text-white ring-2 ring-emerald-500/50 hover:bg-black hover:scale-102 shadow-black/40'
+              ? 'bg-[#dc2626] border-red-500 text-white hover:bg-red-700 animate-pulse'
+              : 'bg-zinc-900 border-zinc-700 text-white hover:bg-zinc-800'
           }`}
-          aria-label={isMuted ? 'Ativar Som do Vídeo' : 'Desativar Som do Vídeo'}
+          title={isMuted ? 'Ativar Som' : 'Silenciar'}
         >
           {isMuted ? (
             <>
-              <span className="relative flex h-3.5 w-3.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-80" />
-                <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-white" />
-              </span>
-              <VolumeX className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
-              <span className="drop-shadow-sm font-black">🔊 Clique Aqui Para Ativar o Som</span>
+              <VolumeX className="w-4 h-4" />
+              <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider">Ativar Som</span>
             </>
           ) : (
             <>
-              <Volume2 className="w-6 h-6 text-emerald-400 animate-bounce" />
-              <span className="font-bold text-emerald-400">Som Ativado • Clique para Silenciar</span>
+              <Volume2 className="w-4 h-4 text-emerald-400" />
+              <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-emerald-400">Som Ativo</span>
             </>
           )}
         </button>
-        <span className="text-xs text-zinc-500 font-medium">
-          {isMuted ? 'O vídeo está em reprodução contínua (looping). Ative o áudio para ouvir o som da oficina!' : 'Áudio ativo em alta fidelidade.'}
-        </span>
       </div>
 
       {/* Container Principal do Player de Vídeo */}
@@ -133,34 +133,8 @@ export default function PortfolioVideo({ whatsappLink }: PortfolioVideoProps) {
           className="w-full h-full object-cover cursor-pointer"
         />
 
-        {/* Gradiente superior para contraste dos botões */}
-        <div className="absolute top-0 inset-x-0 h-28 bg-gradient-to-b from-black/80 via-black/30 to-transparent pointer-events-none z-10" />
-
         {/* Gradiente inferior para controles e títulos */}
         <div className="absolute bottom-0 inset-x-0 h-36 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none z-10" />
-
-        {/* Badges e Controles do Topo */}
-        <div className="absolute top-4 inset-x-4 flex items-center justify-between z-20">
-          <div className="inline-flex items-center gap-1.5 bg-black/60 backdrop-blur-md border border-white/15 px-3 py-1.5 rounded-full text-white text-[11px] font-bold tracking-wider uppercase">
-            <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
-            <Sparkles className="w-3.5 h-3.5 text-red-500" />
-            <span>Vídeo Real • Oficina</span>
-          </div>
-
-          {/* Botão de Som Flutuante no Topo do Vídeo */}
-          <button
-            type="button"
-            onClick={toggleSound}
-            className={`p-2.5 rounded-full backdrop-blur-md transition-all duration-200 cursor-pointer shadow-lg border ${
-              isMuted
-                ? 'bg-[#dc2626] border-red-400 text-white hover:bg-red-700 animate-pulse'
-                : 'bg-black/70 border-white/20 text-white hover:bg-black'
-            }`}
-            title={isMuted ? 'Ativar Som' : 'Silenciar'}
-          >
-            {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5 text-emerald-400" />}
-          </button>
-        </div>
 
         {/* Feedback visual ao clicar (Play / Pause splash) */}
         {showPlaySplash && (
