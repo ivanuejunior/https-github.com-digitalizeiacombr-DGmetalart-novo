@@ -1,0 +1,9 @@
+# Robots.txt para DG Metal Art
+# Hostinger Website & Googlebot Configuration
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Sitemap XML Oficial para Google Search Console e Bing Webmaster
+Sitemap: https://teal-spoonbill-601692.hostingersite.com/sitemap.xml

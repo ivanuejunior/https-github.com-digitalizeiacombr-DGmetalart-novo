@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset 
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+  xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <url>
+    <loc>https://teal-spoonbill-601692.hostingersite.com/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    
+    <!-- Imagens do Portfólio para Indexação no Google Imagens -->
+    <image:image>
+      <image:loc>https://teal-spoonbill-601692.hostingersite.com/foto-3-secao-a.png</image:loc>
+      <image:title>Móveis Industriais em Metal e Madeira Sob Medida - DG Metal Art</image:title>
+      <image:caption>Mesa de jantar, cadeiras e estantes estilo industrial em ferro e madeira maciça</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://teal-spoonbill-601692.hostingersite.com/foto-3-secao-b.png</image:loc>
+      <image:title>Projetos Especiais em Metal e Mezanino - DG Metal Art</image:title>
+      <image:caption>Estrutura metálica personalizada e divisórias de ambiente</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://teal-spoonbill-601692.hostingersite.com/foto-3-secao-c.png</image:loc>
+      <image:title>Serralheria de Alto Padrão - Portas e Portões em Metalon</image:title>
+      <image:caption>Portas, portões e grades de serralheria de segurança sob medida</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://teal-spoonbill-601692.hostingersite.com/Logo-original-jpeg-removebg-preview.png</image:loc>
+      <image:title>DG Metal Art - Serralheria Artística e Móveis Industriais</image:title>
+    </image:image>
+
+    <!-- Vídeo de Projeto Executado para Google Vídeos -->
+    <video:video>
+      <video:thumbnail_loc>https://teal-spoonbill-601692.hostingersite.com/video-poster.jpg</video:thumbnail_loc>
+      <video:title>Projeto Executado: Porta Pivotante em Metalon - DG Metal Art</video:title>
+      <video:description>Entrega e instalação de porta pivotante em metalon fabricada sob medida pela DG Metal Art em São Paulo.</video:description>
+      <video:content_loc>https://teal-spoonbill-601692.hostingersite.com/video-portfolio.mp4</video:content_loc>
+      <video:duration>47</video:duration>
+      <video:publication_date>2026-10-02T00:00:00+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+</urlset>
